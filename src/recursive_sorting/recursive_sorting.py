@@ -1,20 +1,42 @@
 # TO-DO: complete the helpe function below to merge 2 sorted arrays
 def merge(arrA, arrB):
-    print([0]*2)
     print(arrA, arrB)
     elements = len(arrA) + len(arrB)
     merged_arr = [0] * elements
     # TO-DO
+    a = 0
+    b = 0
+    for i in range(elements):
+        if a >= len(arrA):
+            merged_arr[i] = arrB[b]
+            b += 1
 
+        elif b >= len(arrB):
+            merged_arr[i] = arrA[a]
+            a += 1
+
+        elif arrA[a] > arrB[b]:
+            merged_arr[i] = arrB[b]
+            b += 1
+
+        else:
+            merged_arr[i] = arrA[a]
+            a += 1
+    print("mergged_array", merged_arr)
     return merged_arr
 
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort(arr):
+    print(arr)
     # TO-DO
-    mid = len(arr) // 2
-    print(merge([a for a in arr[:mid]], [b for b in arr[mid:]]))
-    return arr
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr)//2
+    left_side = merge_sort(arr[: mid])
+    right_side = merge_sort(arr[mid:])
+    return merge(left_side, right_side)
+    # return arr
 
 
 # STRETCH: implement an in-place merge sort algorithm
@@ -37,4 +59,4 @@ def timsort(arr):
     return arr
 
 
-print(merge_sort([8, 2, 5, 4, 1, 3, 0]))
+print(merge_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))

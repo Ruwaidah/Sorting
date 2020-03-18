@@ -33,8 +33,6 @@ def bubble_sort(arr):
                 temp = arr[i+1]
                 arr[i+1] = arr[i]
                 arr[i] = temp
-                print(arr)
-        print(change)
     return arr
 
 
